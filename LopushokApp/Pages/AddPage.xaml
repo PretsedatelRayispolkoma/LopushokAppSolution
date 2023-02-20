@@ -1,0 +1,93 @@
+﻿<Page x:Class="LopushokApp.Pages.AddPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LopushokApp.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddPage">
+
+    <Grid Loaded="Grid_Loaded">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Article" Grid.Row="0" Grid.Column="0"/>
+        <TextBox x:Name="ArticleTb" Grid.Row="1" Grid.Column="0"/>
+
+        <TextBlock Text="Name" Grid.Row="0" Grid.Column="1"/>
+        <TextBox x:Name="NameTb" Grid.Row="1" Grid.Column="1"/>
+
+        <TextBlock Text="Count of people" Grid.Row="0" Grid.Column="2"/>
+        <TextBox x:Name="CountTb" Grid.Row="1" Grid.Column="2"/>
+
+        <TextBlock Text="Description" Grid.Row="0" Grid.Column="3"/>
+        <TextBox x:Name="DescriptionTb" Grid.Row="1" Grid.Column="3" VerticalAlignment="Stretch" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
+
+        <TextBlock Text="Workshop" Grid.Column="4" Grid.Row="0"/>
+        <ComboBox x:Name="WorkshopCb" Grid.Column="4" Grid.Row="1">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <TextBlock Text="Type of product" Grid.Column="0" Grid.Row="2"/>
+        <ComboBox x:Name="TypeCb" Grid.Column="0" Grid.Row="3">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <ListView x:Name="MaterialLv" MaxWidth="300"
+                  Grid.Row="2" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="2" Margin="15">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="10" Text="{Binding Name}"/>
+                        <TextBlock HorizontalAlignment="Right" Margin="10 0" VerticalAlignment="Center"/>
+                        <Button x:Name="DeleBtn" Content="Remove" Width="60" Height="20" Click="DeleBtn_Click"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <TextBlock Text="Material" Grid.Column="1" Grid.Row="2"/>
+        <ComboBox x:Name="MaterialCb" Grid.Column="1" Grid.Row="3" MinWidth="100" SelectionChanged="MaterialCb_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}" HorizontalAlignment="Left"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <Button x:Name="AddImgBtn" Content="Add image" Grid.Row="4" Grid.Column="2"
+                VerticalAlignment="Center" Width="100" Click="AddImgBtn_Click"/>
+        <TextBlock Text="Minimal price" Grid.Column="4" Grid.Row="2"/>
+        <TextBox x:Name="MinPriceTb" Grid.Column="4" Grid.Row="3"/>
+
+        <Button x:Name="CancelBtn" Content="Cancel" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" Width="100"
+                HorizontalAlignment="Center" VerticalAlignment="Center" Click="CancelBtn_Click"/>
+
+        <Button x:Name="SaveBtn" Content="Save" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Width="100"
+                HorizontalAlignment="Center" VerticalAlignment="Center" Click="SaveBtn_Click"/>
+
+        <Button x:Name="RemoveBtn" Content="Remove" Width="100" Height="25" Grid.Column="4" Grid.Row="5" Click="RemoveBtn_Click"/>
+    </Grid>
+</Page>
